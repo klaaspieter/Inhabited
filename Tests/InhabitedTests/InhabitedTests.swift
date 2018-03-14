@@ -2,15 +2,34 @@ import XCTest
 @testable import Inhabited
 
 class InhabitedTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Inhabited().text, "Hello, World!")
-    }
+  func testInitEmptyArray() {
+    let collection = Inhabited([])
 
+    XCTAssertNil(collection)
+  }
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+  func testInitInhabitedArray() {
+    let collection = Inhabited([1])
+
+    XCTAssertNotNil(collection)
+  }
+
+  func testInitEmptyString() {
+    let collection = Inhabited("")
+
+    XCTAssertNil(collection)
+  }
+
+  func testInitInhabitedString() {
+    let collection = Inhabited("hello")
+
+    XCTAssertNotNil(collection)
+  }
+
+  static var allTests = [
+    ("testInitEmptyArray", testInitEmptyArray),
+    ("testInitInhabitedArray", testInitInhabitedArray),
+    ("testInitEmptyString", testInitEmptyString),
+    ("testInitInhabitedString", testInitInhabitedString),
+  ]
 }

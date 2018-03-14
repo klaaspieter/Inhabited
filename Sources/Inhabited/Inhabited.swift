@@ -1,3 +1,5 @@
-struct Inhabited {
-    var text = "Hello, World!"
+struct Inhabited<C: Collection> {
+  init?(_ collection: C) {
+    guard !collection.isEmpty else { return nil }
+  }
 }
