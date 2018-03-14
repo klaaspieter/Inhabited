@@ -19,6 +19,19 @@ public struct Inhabited<C: Collection> {
   }
 }
 
+extension Inhabited: RangeReplaceableCollection where C: RangeReplaceableCollection {
+  public init() {
+    preconditionFailure("Inhabited cannot be initialized without elements")
+  }
+
+  public mutating func replaceSubrange<C>(
+    _ subrange: Range<Index>,
+    with newElements: C
+  ) where C : Collection, C.Element == Element {
+    return collection.replaceSubrange(subrange, with: newElements)
+  }
+}
+
 extension Inhabited: Equatable where C: Equatable {
   public static func == (lhs: Inhabited<C>, rhs: Inhabited<C>) -> Bool {
     return lhs.collection == rhs.collection

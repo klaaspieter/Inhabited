@@ -93,6 +93,15 @@ class InhabitedTests: XCTestCase {
     XCTAssertEqual(collection, Inhabited(string))
   }
 
+  func testReplaceSubrange() {
+    let array = [1, 1, 1, 4]
+    var collection = Inhabited(array)
+
+    collection?.replaceSubrange((1..<3), with: Inhabited([2, 3])!)
+
+    XCTAssertEqual(collection, Inhabited([1, 2, 3, 4]))
+  }
+
   static var allTests = [
     ("testInitEmptyArray", testInitEmptyArray),
     ("testInitInhabitedArray", testInitInhabitedArray),
