@@ -1,5 +1,5 @@
+import Inhabited
 import XCTest
-@testable import Inhabited
 
 class InhabitedTests: XCTestCase {
   func testInitEmptyArray() {
