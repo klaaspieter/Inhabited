@@ -5,6 +5,10 @@ struct Inhabited<C: Collection> {
     guard !collection.isEmpty else { return nil }
     self.collection = collection
   }
+
+  var count: C.IndexDistance {
+    return collection.count
+  }
 }
 
 extension Inhabited: Collection {

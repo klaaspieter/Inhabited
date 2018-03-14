@@ -42,6 +42,13 @@ class InhabitedTests: XCTestCase {
     XCTAssertEqual(collection?.index(after: 0), array.index(after: 0))
   }
 
+  func testCountArray() {
+    let array = [1, 2, 3]
+    let collection = Inhabited(array)
+
+    XCTAssertEqual(collection?.count, array.count)
+  }
+
   func testInitEmptyString() {
     let collection = Inhabited("")
 
@@ -84,6 +91,13 @@ class InhabitedTests: XCTestCase {
     )
   }
 
+  func testCountString() {
+    let string = "hello"
+    let collection = Inhabited(string)
+
+    XCTAssertEqual(collection?.count, string.count)
+  }
+
   static var allTests = [
     ("testInitEmptyArray", testInitEmptyArray),
     ("testInitInhabitedArray", testInitInhabitedArray),
@@ -91,11 +105,14 @@ class InhabitedTests: XCTestCase {
     ("testEndIndexArray", testEndIndexArray),
     ("testSubscriptArray", testSubscriptArray),
     ("testIndexAfterArray", testIndexAfterArray),
+    ("testCountArray", testCountArray),
+
     ("testInitEmptyString", testInitEmptyString),
     ("testInitInhabitedString", testInitInhabitedString),
     ("testStartIndexString", testStartIndexArray),
     ("testEndIndexString", testEndIndexString),
     ("testSubscriptString", testSubscriptString),
     ("testIndexAfterString", testIndexAfterString),
+    ("testCountString", testCountString)
   ]
 }
