@@ -9,6 +9,10 @@ struct Inhabited<C: Collection> {
   var count: C.IndexDistance {
     return collection.count
   }
+
+  var isEmpty: Bool {
+    return false
+  }
 }
 
 extension Inhabited: Collection {
