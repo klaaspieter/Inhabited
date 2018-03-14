@@ -77,6 +77,13 @@ class InhabitedTests: XCTestCase {
     XCTAssertEqual(collection?.first, string.first)
   }
 
+  func testEquatable() {
+    let string = "hello"
+    let collection = Inhabited(string)
+
+    XCTAssertEqual(collection, Inhabited(string))
+  }
+
   static var allTests = [
     ("testInitEmptyArray", testInitEmptyArray),
     ("testInitInhabitedArray", testInitInhabitedArray),
@@ -90,5 +97,6 @@ class InhabitedTests: XCTestCase {
     ("testCount", testCount),
     ("testIsEmpty", testIsEmpty),
     ("testFirst", testFirst),
+    ("testEquatable", testEquatable),
   ]
 }

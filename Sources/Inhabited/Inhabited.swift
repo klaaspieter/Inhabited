@@ -1,5 +1,5 @@
 struct Inhabited<C: Collection> {
-  private let collection: C
+  private var collection: C
 
   init?(_ collection: C) {
     guard !collection.isEmpty else { return nil }
@@ -16,6 +16,12 @@ struct Inhabited<C: Collection> {
 
   var first: C.Element {
     return collection.first!
+  }
+}
+
+extension Inhabited: Equatable where C: Equatable {
+  static func == (lhs: Inhabited<C>, rhs: Inhabited<C>) -> Bool {
+    return lhs.collection == rhs.collection
   }
 }
 
