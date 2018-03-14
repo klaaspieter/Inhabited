@@ -1,35 +1,35 @@
-struct Inhabited<C: Collection> {
+public struct Inhabited<C: Collection> {
   private var collection: C
 
-  init?(_ collection: C) {
+  public init?(_ collection: C) {
     guard !collection.isEmpty else { return nil }
     self.collection = collection
   }
 
-  var count: Int {
+  public var count: Int {
     return collection.count
   }
 
-  var isEmpty: Bool {
+  public var isEmpty: Bool {
     return false
   }
 
-  var first: C.Element {
+  public var first: C.Element {
     return collection.first!
   }
 }
 
 extension Inhabited: Equatable where C: Equatable {
-  static func == (lhs: Inhabited<C>, rhs: Inhabited<C>) -> Bool {
+  public static func == (lhs: Inhabited<C>, rhs: Inhabited<C>) -> Bool {
     return lhs.collection == rhs.collection
   }
 }
 
 extension Inhabited: MutableCollection where C: MutableCollection {
-  typealias Element = C.Element
-  typealias SubSequence = C.SubSequence
+  public typealias Element = C.Element
+  public typealias SubSequence = C.SubSequence
 
-  subscript(position: C.Index) -> C.Element {
+  public subscript(position: C.Index) -> C.Element {
     get {
       return collection[position]
     }
@@ -40,28 +40,28 @@ extension Inhabited: MutableCollection where C: MutableCollection {
 }
 
 extension Inhabited: Collection {
-  typealias Index = C.Index
-  typealias Iterator = C.Iterator
+  public typealias Index = C.Index
+  public typealias Iterator = C.Iterator
 
-  var startIndex: C.Index {
+  public var startIndex: C.Index {
     return collection.startIndex
   }
 
-  var endIndex: C.Index {
+  public var endIndex: C.Index {
     return collection.endIndex
   }
 
-  func index(after i: C.Index) -> C.Index {
+  public func index(after i: C.Index) -> C.Index {
     return collection.index(after: i)
   }
 
-  subscript(position: C.Index) -> C.Element {
+  public subscript(position: C.Index) -> C.Element {
     return collection[position]
   }
 }
 
 extension Inhabited: Sequence {
-  func makeIterator() -> C.Iterator {
+  public func makeIterator() -> C.Iterator {
     return collection.makeIterator()
   }
 }
