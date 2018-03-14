@@ -14,41 +14,6 @@ class InhabitedTests: XCTestCase {
     XCTAssertNotNil(collection)
   }
 
-  func testStartIndexArray() {
-    let array = [1]
-    let collection = Inhabited(array)
-
-    XCTAssertEqual(collection?.startIndex, array.startIndex)
-  }
-
-  func testEndIndexArray() {
-    let array = [1]
-    let collection = Inhabited(array)
-
-    XCTAssertEqual(collection?.endIndex, array.endIndex)
-  }
-
-  func testSubscriptArray() {
-    let array = [1, 2, 3]
-    let collection = Inhabited(array)
-
-    XCTAssertEqual(collection?[2], array[2])
-  }
-
-  func testIndexAfterArray() {
-    let array = [1, 2, 3]
-    let collection = Inhabited(array)
-
-    XCTAssertEqual(collection?.index(after: 0), array.index(after: 0))
-  }
-
-  func testCountArray() {
-    let array = [1, 2, 3]
-    let collection = Inhabited(array)
-
-    XCTAssertEqual(collection?.count, array.count)
-  }
-
   func testInitEmptyString() {
     let collection = Inhabited("")
 
@@ -61,28 +26,28 @@ class InhabitedTests: XCTestCase {
     XCTAssertNotNil(collection)
   }
 
-  func testStartIndexString() {
+  func testStartIndex() {
     let string = "hello"
     let collection = Inhabited(string)
 
     XCTAssertEqual(collection?.startIndex, string.startIndex)
   }
 
-  func testEndIndexString() {
+  func testEndIndex() {
     let string = "hello"
     let collection = Inhabited(string)
 
     XCTAssertEqual(collection?.endIndex, string.endIndex)
   }
 
-  func testSubscriptString() {
+  func testSubscript() {
     let string = "hello"
     let collection = Inhabited(string)
 
     XCTAssertEqual(collection?[string.startIndex], string[string.startIndex])
   }
 
-  func testIndexAfterString() {
+  func testIndexAfter() {
     let string = "hello"
     let collection = Inhabited(string)
 
@@ -91,7 +56,7 @@ class InhabitedTests: XCTestCase {
     )
   }
 
-  func testCountString() {
+  func testCount() {
     let string = "hello"
     let collection = Inhabited(string)
 
@@ -101,18 +66,13 @@ class InhabitedTests: XCTestCase {
   static var allTests = [
     ("testInitEmptyArray", testInitEmptyArray),
     ("testInitInhabitedArray", testInitInhabitedArray),
-    ("testStartIndexArray", testStartIndexArray),
-    ("testEndIndexArray", testEndIndexArray),
-    ("testSubscriptArray", testSubscriptArray),
-    ("testIndexAfterArray", testIndexAfterArray),
-    ("testCountArray", testCountArray),
-
     ("testInitEmptyString", testInitEmptyString),
     ("testInitInhabitedString", testInitInhabitedString),
-    ("testStartIndexString", testStartIndexArray),
-    ("testEndIndexString", testEndIndexString),
-    ("testSubscriptString", testSubscriptString),
-    ("testIndexAfterString", testIndexAfterString),
-    ("testCountString", testCountString)
+
+    ("testStartIndex", testStartIndex),
+    ("testEndIndex", testEndIndex),
+    ("testSubscript", testSubscript),
+    ("testIndexAfter", testIndexAfter),
+    ("testCount", testCount)
   ]
 }
