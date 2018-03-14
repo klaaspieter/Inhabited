@@ -25,6 +25,20 @@ extension Inhabited: Equatable where C: Equatable {
   }
 }
 
+extension Inhabited: MutableCollection where C: MutableCollection {
+  typealias Element = C.Element
+  typealias SubSequence = C.SubSequence
+
+  subscript(position: C.Index) -> C.Element {
+    get {
+      return collection[position]
+    }
+    set {
+      collection[position] = newValue
+    }
+  }
+}
+
 extension Inhabited: Collection {
   typealias Index = C.Index
   typealias Iterator = C.Iterator
@@ -37,12 +51,12 @@ extension Inhabited: Collection {
     return collection.endIndex
   }
 
-  subscript(position: C.Index) -> C.Element {
-    return collection[position]
-  }
-
   func index(after i: C.Index) -> C.Index {
     return collection.index(after: i)
+  }
+
+  subscript(position: C.Index) -> C.Element {
+    return collection[position]
   }
 }
 

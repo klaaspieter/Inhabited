@@ -40,11 +40,20 @@ class InhabitedTests: XCTestCase {
     XCTAssertEqual(collection?.endIndex, string.endIndex)
   }
 
-  func testSubscript() {
+  func testSubscriptGet() {
     let string = "hello"
     let collection = Inhabited(string)
 
     XCTAssertEqual(collection?[string.startIndex], string[string.startIndex])
+  }
+
+  func testSubscriptSet() {
+    let array = [1, 1, 3]
+    var collection = Inhabited(array)
+
+    collection?[1] = 2
+
+    XCTAssertEqual(collection, Inhabited([1, 2, 3]))
   }
 
   func testIndexAfter() {
@@ -92,7 +101,8 @@ class InhabitedTests: XCTestCase {
 
     ("testStartIndex", testStartIndex),
     ("testEndIndex", testEndIndex),
-    ("testSubscript", testSubscript),
+    ("testSubscriptGet", testSubscriptGet),
+    ("testSubscriptSet", testSubscriptSet),
     ("testIndexAfter", testIndexAfter),
     ("testCount", testCount),
     ("testIsEmpty", testIsEmpty),
