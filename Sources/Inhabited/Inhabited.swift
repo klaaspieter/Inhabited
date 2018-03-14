@@ -6,7 +6,7 @@ struct Inhabited<C: Collection> {
     self.collection = collection
   }
 
-  var count: C.IndexDistance {
+  var count: Int {
     return collection.count
   }
 
