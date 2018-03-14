@@ -13,6 +13,10 @@ struct Inhabited<C: Collection> {
   var isEmpty: Bool {
     return false
   }
+
+  var first: C.Element {
+    return collection.first!
+  }
 }
 
 extension Inhabited: Collection {
