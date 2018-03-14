@@ -102,6 +102,14 @@ class InhabitedTests: XCTestCase {
     XCTAssertEqual(collection, Inhabited([1, 2, 3, 4]))
   }
 
+  // Intentionally comment as this will crash the test suite
+//  func testRemoveLast() {
+//    let array = [1]
+//    var collection = Inhabited(array)
+//
+//    collection?.remove(at: 0)
+//  }
+
   static var allTests = [
     ("testInitEmptyArray", testInitEmptyArray),
     ("testInitInhabitedArray", testInitInhabitedArray),

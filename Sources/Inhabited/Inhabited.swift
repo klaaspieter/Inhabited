@@ -21,14 +21,21 @@ public struct Inhabited<C: Collection> {
 
 extension Inhabited: RangeReplaceableCollection where C: RangeReplaceableCollection {
   public init() {
-    preconditionFailure("Inhabited cannot be initialized without elements")
+    preconditionFailure("An Inhabited collection cannot be initialized without elements")
   }
 
   public mutating func replaceSubrange<C>(
     _ subrange: Range<Index>,
     with newElements: C
   ) where C : Collection, C.Element == Element {
-    return collection.replaceSubrange(subrange, with: newElements)
+    var newCollection = collection
+    newCollection.replaceSubrange(subrange, with: newElements)
+
+    guard !newCollection.isEmpty else {
+      preconditionFailure("Cannot remove the last element from a Inhabited collection")
+    }
+
+    collection = newCollection
   }
 }
 
