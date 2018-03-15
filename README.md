@@ -9,7 +9,7 @@ A collection that cannot be empty
 Add the following to your `Package.swift` dependencies:
 
 ```swift
-.package(url: https://github.com/klaaspieter/Inhabited, from: "0.0.1")
+.package(url: https://github.com/klaaspieter/Inhabited, .branch("master"))
 ```
 
 ## Usage
