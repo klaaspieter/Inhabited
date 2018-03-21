@@ -8,3 +8,9 @@ public struct Inhabited<Element> {
     self.tail = Array(collection.dropFirst())
   }
 }
+
+extension Inhabited: Equatable where Element: Equatable {
+  public static func == (lhs: Inhabited, rhs: Inhabited) -> Bool {
+    return lhs.head == rhs.head && lhs.tail == rhs.tail
+  }
+}

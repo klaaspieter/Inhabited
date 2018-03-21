@@ -25,4 +25,18 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertNotNil(collection)
   }
+
+  func testEqual() {
+    let string = "hello"
+    let collection = Inhabited(string)
+
+    XCTAssertEqual(collection, Inhabited(string))
+  }
+
+  func testNotEqual() {
+    let string = "hello"
+    let collection = Inhabited("bye")
+
+    XCTAssertNotEqual(collection, Inhabited(string))
+  }
 }
