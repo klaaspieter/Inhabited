@@ -26,24 +26,6 @@ extension Inhabited: Collection {
     return i + 1
   }
 
-  public subscript(position: Int) -> Element {
-    get {
-      if position == startIndex {
-        return head
-      } else {
-        return tail[position - 1]
-      }
-    }
-
-    set {
-      if position == startIndex {
-        head = newValue
-      } else {
-        tail[position - 1] = newValue
-      }
-    }
-  }
-
   public var startIndex: Int {
     return 0
   }
@@ -64,6 +46,26 @@ extension Inhabited: Collection {
       }
       return tailIterator.next()
     })
+  }
+}
+
+extension Inhabited: MutableCollection {
+  public subscript(position: Int) -> Element {
+    get {
+      if position == startIndex {
+        return head
+      } else {
+        return tail[position - 1]
+      }
+    }
+
+    set {
+      if position == startIndex {
+        head = newValue
+      } else {
+        tail[position - 1] = newValue
+      }
+    }
   }
 }
 
