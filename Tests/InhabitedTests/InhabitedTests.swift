@@ -86,4 +86,15 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(collection?.first, string.first)
   }
+
+  func testIterator() {
+    let string = "hi!"
+    let collection = Inhabited(string)
+    let iterator = collection?.makeIterator()
+
+    XCTAssertEqual(iterator?.next(), "h")
+    XCTAssertEqual(iterator?.next(), "i")
+    XCTAssertEqual(iterator?.next(), "!")
+    XCTAssertNil(iterator?.next())
+  }
 }

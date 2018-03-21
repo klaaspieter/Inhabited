@@ -35,18 +35,6 @@ extension Inhabited: Collection {
   }
 
   public typealias Index = Int
-
-  public func makeIterator() -> AnyIterator<Element> {
-    var returnHead = true
-    var tailIterator = tail.makeIterator()
-    return AnyIterator({
-      if returnHead {
-        defer { returnHead = false }
-        return self.head
-      }
-      return tailIterator.next()
-    })
-  }
 }
 
 extension Inhabited: MutableCollection {
@@ -66,6 +54,20 @@ extension Inhabited: MutableCollection {
         tail[position - 1] = newValue
       }
     }
+  }
+}
+
+extension Inhabited: Sequence {
+  public func makeIterator() -> AnyIterator<Element> {
+    var returnHead = true
+    var tailIterator = tail.makeIterator()
+    return AnyIterator({
+      if returnHead {
+        defer { returnHead = false }
+        return self.head
+      }
+      return tailIterator.next()
+    })
   }
 }
 
