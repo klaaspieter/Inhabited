@@ -15,6 +15,10 @@ public struct Inhabited<Element> {
   public var isEmpty: Bool {
     return false
   }
+
+  public var first: Element {
+    return head
+  }
 }
 
 extension Inhabited: Collection {
