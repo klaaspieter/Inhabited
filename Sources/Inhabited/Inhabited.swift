@@ -57,6 +57,10 @@ extension Inhabited: MutableCollection {
   }
 }
 
+extension Inhabited: RandomAccessCollection {
+
+}
+
 extension Inhabited: Sequence {
   public func makeIterator() -> AnyIterator<Element> {
     var returnHead = true
