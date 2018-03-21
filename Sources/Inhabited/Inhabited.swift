@@ -11,6 +11,10 @@ public struct Inhabited<Element> {
   public var count: Int {
     return tail.count + 1
   }
+
+  public var isEmpty: Bool {
+    return false
+  }
 }
 
 extension Inhabited: Collection {
