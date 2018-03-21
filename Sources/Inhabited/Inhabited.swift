@@ -7,6 +7,10 @@ public struct Inhabited<Element> {
     self.head = head
     self.tail = Array(collection.dropFirst())
   }
+
+  public var count: Int {
+    return tail.count + 1
+  }
 }
 
 extension Inhabited: Collection {

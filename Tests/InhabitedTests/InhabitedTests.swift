@@ -72,4 +72,11 @@ class InhabitedTests: XCTestCase {
       array.index(after: 2)
     )
   }
+
+  func testCount() {
+    let string = "hello"
+    let collection = Inhabited(string)
+
+    XCTAssertEqual(collection?.count, string.count)
+  }
 }
