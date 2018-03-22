@@ -199,4 +199,28 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(collection?.removing(at: 4), Inhabited("hello"))
   }
+
+  func testRemovingLast() {
+    let collection = Inhabited("h")
+
+    XCTAssertNil(collection?.removing(at: 0))
+  }
+
+  func testReplacingAtStart() {
+    let collection = Inhabited("012lo")
+
+    XCTAssertEqual(collection?.replacingSubrange(0...2, with: "hel"), Inhabited("hello"))
+  }
+
+  func testReplacingInMiddle() {
+    let collection = Inhabited("he234")
+
+    XCTAssertEqual(collection?.replacingSubrange(2...4, with: "llo"), Inhabited("hello"))
+  }
+
+  func testReplacingEmpty() {
+    let collection = Inhabited("hello")
+
+    XCTAssertNil(collection?.replacingSubrange(0...4, with: ""))
+  }
 }

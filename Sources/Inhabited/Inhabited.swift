@@ -61,6 +61,15 @@ public struct Inhabited<Element> {
     return Inhabited(array)
   }
 
+  public func replacingSubrange<R: RangeExpression, C: Collection>(
+    _ range: R,
+    with newElements: C
+  ) -> Inhabited<Element>? where C.Element == Element, R.Bound == Index {
+    var array = Array(self)
+    array.replaceSubrange(range, with: newElements)
+    return Inhabited(array)
+  }
+
   public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> Inhabited<Element>? {
     let array = try Array(self).filter(isIncluded)
     return Inhabited(array)
