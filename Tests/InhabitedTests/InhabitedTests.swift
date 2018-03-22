@@ -26,6 +26,28 @@ class InhabitedTests: XCTestCase {
     XCTAssertNotNil(collection)
   }
 
+  func testInitFromFiniteSequence() {
+    var count = 0
+    // returns 1...3
+    let iterator = AnyIterator({ () -> Int? in
+      if count > 3 {
+        return .none
+      } else {
+        defer { count += 1}
+        return count
+      }
+    })
+    let collection = Inhabited(iterator)
+
+    XCTAssertEqual(collection, Inhabited([0, 1, 2, 3]))
+  }
+
+  func testInitFromEmptySequence() {
+    let collection = Inhabited<Int>(EmptyIterator())
+
+    XCTAssertNil(collection)
+  }
+
   func testEqual() {
     let string = "hello"
     let collection = Inhabited(string)

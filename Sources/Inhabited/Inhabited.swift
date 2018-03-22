@@ -2,10 +2,15 @@ public struct Inhabited<Element> {
   private var head: Element
   private var tail: [Element]
 
-  public init?<C: Collection>(_ collection: C) where C.Element == Element {
-    guard let head = collection.first else { return nil }
+  public init?<S: Sequence>(_ elements: S) where S.Element == Element {
+    var iterator = elements.makeIterator()
+    guard let head = iterator.next() else { return nil }
+
     self.head = head
-    self.tail = Array(collection.dropFirst())
+    self.tail = []
+    while let element = iterator.next() {
+      tail.append(element)
+    }
   }
 
   public var count: Int {
