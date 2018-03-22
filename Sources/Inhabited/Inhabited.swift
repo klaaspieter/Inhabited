@@ -25,6 +25,10 @@ public struct Inhabited<Element> {
     return head
   }
 
+  public mutating func append(_ element: Element) {
+    insert(element, at: endIndex)
+  }
+
   public mutating func insert(_ element: Element, at index: Int) {
     if index == startIndex {
       tail.insert(head, at: 0)

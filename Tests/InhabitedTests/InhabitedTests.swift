@@ -135,4 +135,12 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(collection, Inhabited("hello"))
   }
+
+  func testAppend() {
+    var collection = Inhabited("h")
+
+    collection?.append("i")
+
+    XCTAssertEqual(collection, Inhabited("hi"))
+  }
 }
