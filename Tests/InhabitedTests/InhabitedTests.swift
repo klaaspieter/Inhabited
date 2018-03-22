@@ -223,4 +223,16 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertNil(collection?.replacingSubrange(0...4, with: ""))
   }
+
+  func testDescriptionWithCharacterElement() {
+    let collection = Inhabited("hello")!
+
+    XCTAssertEqual(collection.description, "Inhabited(\"hello\")")
+  }
+
+  func testDescription() {
+    let collection = Inhabited([1, 2, 3, 4])!
+
+    XCTAssertEqual(collection.description, "Inhabited([1, 2, 3, 4])")
+  }
 }

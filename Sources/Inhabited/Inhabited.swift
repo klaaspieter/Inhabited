@@ -133,3 +133,13 @@ extension Inhabited: Equatable where Element: Equatable {
     return lhs.head == rhs.head && lhs.tail == rhs.tail
   }
 }
+
+extension Inhabited: CustomStringConvertible  {
+  public var description: String {
+    if let head = head as? Character, let tail = tail as? [Character] {
+      return "Inhabited(\"\(head)\(String(tail))\")"
+    } else {
+      return "Inhabited(\(Array(self)))"
+    }
+  }
+}
