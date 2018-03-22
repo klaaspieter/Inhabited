@@ -55,10 +55,8 @@ public struct Inhabited<Element> {
     }
   }
 
-  public func removing(at index: Int) -> Inhabited<Element>? {
-    var array = Array(self)
-    array.remove(at: index)
-    return Inhabited(array)
+  public func removing(at position: Int) -> Inhabited<Element>? {
+    return replacingSubrange(position..<index(after: position), with: [])
   }
 
   public func replacingSubrange<R: RangeExpression, C: Collection>(
