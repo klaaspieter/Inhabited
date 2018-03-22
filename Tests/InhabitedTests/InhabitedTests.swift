@@ -143,4 +143,28 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(collection, Inhabited("hi"))
   }
+
+  func testInsertContentsOfAtStart() {
+    var collection = Inhabited("lo")
+
+    collection?.insert(contentsOf: "hel", at: 0)
+
+    XCTAssertEqual(collection, Inhabited("hello"))
+  }
+
+  func testInsertEmptySequence() {
+    var collection = Inhabited("hello")
+
+    collection?.insert(contentsOf: "", at: 2)
+
+    XCTAssertEqual(collection, Inhabited("hello"))
+  }
+
+  func testInsertContentsOfInMiddle() {
+    var collection = Inhabited("hlo")
+
+    collection?.insert(contentsOf: "el", at: 1)
+
+    XCTAssertEqual(collection, Inhabited("hello"))
+  }
 }

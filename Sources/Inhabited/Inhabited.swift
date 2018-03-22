@@ -37,6 +37,28 @@ public struct Inhabited<Element> {
       tail.insert(element, at: index - 1)
     }
   }
+
+  public mutating func insert<S: Sequence>(
+    contentsOf sequence: S,
+    at index: Int
+  ) where S.Element == Element {
+    if index == startIndex {
+      var iterator = sequence.makeIterator()
+      guard let newHead = iterator.next() else { return }
+
+      var tailToInsert: [Element] = []
+      while let element = iterator.next() {
+        tailToInsert.append(element)
+      }
+      tailToInsert.append(head)
+      self.tail.insert(contentsOf: tailToInsert, at: 0)
+
+      self.head = newHead
+
+    } else {
+      tail.insert(contentsOf: Array(sequence), at: index - 1)
+    }
+  }
 }
 
 extension Inhabited: Collection {
