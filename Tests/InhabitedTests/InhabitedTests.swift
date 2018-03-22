@@ -167,4 +167,24 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(collection, Inhabited("hello"))
   }
+
+  func testFilterEverything() {
+    let collection = Inhabited("hello")
+
+    XCTAssertNil(collection?.filter({ _ in false }))
+  }
+
+  func testFilter() {
+    let collection = Inhabited("hello")
+
+    XCTAssertEqual(collection?.filter({ $0 == "e" || $0 == "o" }), Inhabited("eo"))
+  }
+
+  func testOriginalFilter() {
+    let collection = Inhabited([1, 2, 3, 4])
+
+    let array: [Int]? = collection?.filter({ _ in false })
+
+    XCTAssertEqual(array, [])
+  }
 }

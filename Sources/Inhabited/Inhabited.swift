@@ -54,6 +54,11 @@ public struct Inhabited<Element> {
       tail.insert(contentsOf: Array(sequence), at: index - 1)
     }
   }
+
+  public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> Inhabited<Element>? {
+    let array = try Array(self).filter(isIncluded)
+    return Inhabited(array)
+  }
 }
 
 extension Inhabited: Collection {
