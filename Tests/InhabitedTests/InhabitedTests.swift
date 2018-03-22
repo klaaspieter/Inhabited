@@ -187,4 +187,16 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(array, [])
   }
+
+  func testRemovingAtStart() {
+    let collection = Inhabited("hhello")
+
+    XCTAssertEqual(collection?.removing(at: 0), Inhabited("hello"))
+  }
+
+  func testRemovingFromMiddle() {
+    let collection = Inhabited("helloo")
+
+    XCTAssertEqual(collection?.removing(at: 4), Inhabited("hello"))
+  }
 }

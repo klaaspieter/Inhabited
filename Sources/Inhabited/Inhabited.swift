@@ -55,6 +55,12 @@ public struct Inhabited<Element> {
     }
   }
 
+  public func removing(at index: Int) -> Inhabited<Element>? {
+    var array = Array(self)
+    array.remove(at: index)
+    return Inhabited(array)
+  }
+
   public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> Inhabited<Element>? {
     let array = try Array(self).filter(isIncluded)
     return Inhabited(array)
