@@ -24,6 +24,15 @@ public struct Inhabited<Element> {
   public var first: Element {
     return head
   }
+
+  public mutating func insert(_ element: Element, at index: Int) {
+    if index == startIndex {
+      tail.insert(head, at: 0)
+      head = element
+    } else {
+      tail.insert(element, at: index - 1)
+    }
+  }
 }
 
 extension Inhabited: Collection {

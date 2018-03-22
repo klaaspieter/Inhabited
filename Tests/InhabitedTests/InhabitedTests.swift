@@ -119,4 +119,20 @@ class InhabitedTests: XCTestCase {
     XCTAssertEqual(iterator?.next(), "!")
     XCTAssertNil(iterator?.next())
   }
+
+  func testInsertAtStart() {
+    var collection = Inhabited("ello")
+
+    collection?.insert("h", at: 0)
+
+    XCTAssertEqual(collection, Inhabited("hello"))
+  }
+
+  func testInsertInMiddle() {
+    var collection = Inhabited("helo")
+
+    collection?.insert("l", at: 2)
+
+    XCTAssertEqual(collection, Inhabited("hello"))
+  }
 }
