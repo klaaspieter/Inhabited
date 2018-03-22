@@ -143,3 +143,9 @@ extension Inhabited: CustomStringConvertible  {
     }
   }
 }
+
+extension Inhabited: CustomDebugStringConvertible {
+  public var debugDescription: String {
+    return "Inhabited(head: \(head), tail: \(tail))"
+  }
+}

@@ -235,4 +235,10 @@ class InhabitedTests: XCTestCase {
 
     XCTAssertEqual(collection.description, "Inhabited([1, 2, 3, 4])")
   }
+
+  func testDebugDescription() {
+    let collection = Inhabited("hi")!
+
+    XCTAssertEqual(collection.debugDescription, "Inhabited(head: h, tail: [\"i\"])")
+  }
 }
