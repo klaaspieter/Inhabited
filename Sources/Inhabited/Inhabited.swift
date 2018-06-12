@@ -128,12 +128,6 @@ extension Inhabited: Sequence {
   }
 }
 
-extension Inhabited: Equatable where Element: Equatable {
-  public static func == (lhs: Inhabited, rhs: Inhabited) -> Bool {
-    return lhs.head == rhs.head && lhs.tail == rhs.tail
-  }
-}
-
 extension Inhabited: CustomStringConvertible  {
   public var description: String {
     if let head = head as? Character, let tail = tail as? [Character] {
@@ -149,3 +143,5 @@ extension Inhabited: CustomDebugStringConvertible {
     return "Inhabited(head: \(head), tail: \(tail))"
   }
 }
+
+extension Inhabited: Equatable where Element: Equatable {}
