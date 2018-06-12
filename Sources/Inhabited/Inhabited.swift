@@ -145,3 +145,4 @@ extension Inhabited: CustomDebugStringConvertible {
 }
 
 extension Inhabited: Equatable where Element: Equatable {}
+extension Inhabited: Hashable where Element: Hashable {}
